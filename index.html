@@ -21,23 +21,28 @@
     h1 {
       font-size: 2.5rem;
       text-shadow: 2px 2px 5px #000;
+      text-align: center;
     }
 
     .button-container {
       margin-top: 30px;
+      display: flex;
+      gap: 20px;
       position: relative;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
       height: 200px;
-      width: 300px;
     }
 
     button {
-      position: absolute;
       padding: 12px 24px;
       font-size: 1.2rem;
       border: none;
       border-radius: 8px;
       cursor: pointer;
       transition: 0.2s ease;
+      position: relative;
     }
 
     #yesBtn {
@@ -48,8 +53,6 @@
     #noBtn {
       background-color: #dc3545;
       color: white;
-      bottom: 0;
-      right: 0;
     }
 
     button:hover {
@@ -66,9 +69,11 @@
 
   <script>
     const yesBtn = document.getElementById("yesBtn");
+    const container = document.querySelector(".button-container");
 
     yesBtn.addEventListener("mouseover", () => {
-      const container = document.querySelector(".button-container");
+      yesBtn.style.position = "absolute";
+      
       const maxX = container.clientWidth - yesBtn.offsetWidth;
       const maxY = container.clientHeight - yesBtn.offsetHeight;
 
