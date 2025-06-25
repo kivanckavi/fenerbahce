@@ -1,60 +1,87 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fenerbahçe Şampiyon</title>
-    <style>
-        h1 {
-            text-align: center;
-            margin-top: 5%;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fenerbahçe Şampiyon Olacak mı?</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #001f3f, #fcd116);
+      height: 100vh;
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      overflow: hidden;
+    }
 
-        button.evet {
-            margin-left: 42%;
-            position: absolute; /* Butonun mutlak konumda olması için */
-        }
+    h1 {
+      font-size: 2.5rem;
+      text-shadow: 2px 2px 5px #000;
+    }
 
-        button.hayir {
-            margin-left: 52%;
-            position: absolute; /* Butonun mutlak konumda olması için */
-        }
-    </style>
+    .button-container {
+      margin-top: 30px;
+      position: relative;
+      height: 200px;
+      width: 300px;
+    }
+
+    button {
+      position: absolute;
+      padding: 12px 24px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    #yesBtn {
+      background-color: #28a745;
+      color: white;
+    }
+
+    #noBtn {
+      background-color: #dc3545;
+      color: white;
+      bottom: 0;
+      right: 0;
+    }
+
+    button:hover {
+      box-shadow: 0 0 12px rgba(0,0,0,0.4);
+    }
+  </style>
 </head>
-<body onload="changeIt();" onclick="moveIt();">
+<body>
+  <h1>Fenerbahçe şampiyon olacak mı?</h1>
+  <div class="button-container">
+    <button id="yesBtn">Evet</button>
+    <button id="noBtn">Hayır</button>
+  </div>
 
-    <h1>Fenerbahçe şampiyon olur mu?</h1>
-    <button class="evet" id="myButton">Evet!</button>
-    <button class="hayir"  onclick="redirectToWebsite()">Hayır!</button>
+  <script>
+    const yesBtn = document.getElementById("yesBtn");
 
-    <script>
-        const button = document.getElementById('myButton');
+    yesBtn.addEventListener("mouseover", () => {
+      const container = document.querySelector(".button-container");
+      const maxX = container.clientWidth - yesBtn.offsetWidth;
+      const maxY = container.clientHeight - yesBtn.offsetHeight;
 
-        function changeIt() {
+      const randomX = Math.floor(Math.random() * maxX);
+      const randomY = Math.floor(Math.random() * maxY);
 
-            button.style.left = startX + 'px';
-            button.style.top = startY + 'px';
-        }
+      yesBtn.style.left = randomX + "px";
+      yesBtn.style.top = randomY + "px";
+    });
 
-        function moveIt() {
-            // Sayfaya tıklandığında yapılacak işlemleri ekleyebilirsiniz
-        }
-
-        function redirectToWebsite() {
-            // Evet butonuna tıklandığında bir web sitesine yönlendirme
-            window.location.href = "https://www.google.com/search?q=aziz+y%C4%B1ld%C4%B1r%C4%B1m&sca_esv=591536266&rlz=1C1CHBD_trTR1074TR1074&tbm=isch&sxsrf=AM9HkKlWyMrnBAd2rggq0nrXFhKo48PZeA:1702752926545&source=lnms&sa=X&ved=2ahUKEwjCsM760JSDAxWcVfEDHRxUCxUQ_AUoAnoECAIQBA&biw=1920&bih=919&dpr=1"; // Yönlendirilecek web sitesinin URL'sini buraya ekleyin
-        }
-
-        button.addEventListener('mouseover', function() {
-
-            const randomX = Math.floor(Math.random() * 200);
-            const randomY = Math.floor(Math.random() * 500);
-
-            button.style.left = randomX + 'px';
-            button.style.top = randomY + 'px';
-        });
-    </script>
-
+    document.getElementById("noBtn").addEventListener("click", () => {
+      window.location.href = "https://www.galatasaray.org/";
+    });
+  </script>
 </body>
 </html>
